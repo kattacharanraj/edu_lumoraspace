@@ -1,0 +1,23 @@
+{
+  "name": "edu-lumoraspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "edu.lumoraspace.in \u2014 LumoraSpace Academy course catalog (v0)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "brand": "node scripts/build-brand.js",
+    "db:create": "wrangler d1 create edu-lumoraspace",
+    "db:init": "wrangler d1 execute edu-lumoraspace --remote --file=./migrations/0001_init.sql",
+    "db:init:local": "wrangler d1 execute edu-lumoraspace --local --file=./migrations/0001_init.sql",
+    "db:seed": "wrangler d1 execute edu-lumoraspace --remote --file=./migrations/0002_seed.sql",
+    "db:seed:local": "wrangler d1 execute edu-lumoraspace --local --file=./migrations/0002_seed.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.28.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "workerd@1.20260831.1": true
+  }
+}

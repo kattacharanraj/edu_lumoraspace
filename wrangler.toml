@@ -1,0 +1,31 @@
+name = "edu-lumoraspace"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+
+# Public hostname. Requires lumoraspace.in to be an active zone on this Cloudflare account.
+routes = [
+  { pattern = "edu.lumoraspace.in", custom_domain = true }
+]
+
+# Static assets (CSS / client JS / icons). Served before the Worker;
+# anything that is not a file falls through to src/index.js.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Course storage. Create with:  npm run db:create
+# then paste the printed database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "edu-lumoraspace"
+database_id = "ad06daa8-b773-4fe1-ad4c-4b0ef33f8a38"
+
+[vars]
+SITE_NAME = "LumoraSpace Academy"
+SITE_URL = "https://edu.lumoraspace.in"
+PARENT_URL = "https://lumoraspace.in"
+CONTACT_EMAIL = "hello@lumoraspace.in"
+
+# Secrets (never put these in this file):
+#   wrangler secret put ADMIN_PASSWORD
+#   wrangler secret put SESSION_SECRET
